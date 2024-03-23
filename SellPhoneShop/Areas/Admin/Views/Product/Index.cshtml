@@ -1,0 +1,47 @@
+﻿@using SellPhoneShop.Models
+@model IEnumerable<ProductModel>
+
+@{
+    ViewData["Title"] = "Danh sách Sản phẩm";
+}
+<h3>Danh sách Sản phẩm</h3>
+
+<button class="btn btn-primary">
+    <a asp-controller="Product" asp-action="Add">Thêm mới Sản phẩm</a>
+</button>
+
+<table class="table-hover">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên Sản phẩm</th>
+            <th>Hình ảnh</th>
+            <th>Mô tả</th>
+            <th>Giá</th>
+            <th>Slug</th>
+            <th>Danh mục</th>
+            <th>Hãng</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td><img src="~/media/products/@item.Image" width="100px" height="100px"/></td>
+                <td>@item.Description</td>
+                <td>@item.Price</td>
+                <td>@item.Slug</td>
+                <td>@item.Category.Name</td>
+                <td>@item.Brand.Name</td>
+                <td>
+                    <a class="btn btn-warning btn-sm" asp-controller="Product" asp-action="Edit" asp-route-Id="@item.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Product" asp-action="Delete" asp-route-Id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

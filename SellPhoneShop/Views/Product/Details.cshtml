@@ -1,0 +1,55 @@
+﻿@{
+	ViewData["Title"] = "Chi tiết sản phẩm";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<!-- Menu Left -->
+				@Html.Partial("_SidebarPartial")
+			</div>
+
+			<div class="col-sm-9 padding-right">
+				<div class="product-details">
+					<!--product-details-->
+					<div class="col-sm-5">
+						<div class="view-product">
+							<img src="~/media/products/@Model.Image" alt="" />
+							
+						</div>
+						
+
+					</div>
+					<div class="col-sm-7">
+						<div class="product-information">
+							<!--/product-information-->
+							
+							<h2>@Model.Name</h2>
+							
+							<img src="~/images/product-details/rating.png" alt="" />
+							<span>Giá: @Model.Price</span>
+							<span>
+								<label>Số lượng: </label>
+								<input type="text" value="1" />
+								<button type="button" class="btn btn-fefault cart" asp-controller="Cart" asp-action="Add" asp-route-Id="@Model.Id">
+									<i class="fa fa-shopping-cart"></i>
+									Thêm vào giỏ hàng
+									
+								</button>
+							</span>
+							<p><b>Mô tả:</b>@Model.Description</p>
+							<p><b>Category:</b>@Model.Category.Name</p>
+							<p><b>Brand:</b>@Model.Brand.Name</p>
+							
+						</div><!--/product-information-->
+					</div>
+				</div><!--/product-details-->
+
+				
+			</div>
+		</div>
+	</div>
+</section>

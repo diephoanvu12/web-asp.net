@@ -1,0 +1,40 @@
+﻿@using SellPhoneShop.Models
+@model IEnumerable<CategoryModel>
+
+@{
+    ViewData["Title"] = "Danh sách danh mục";
+}
+<h3>Danh sách danh mục</h3>
+
+<button class="btn btn-primary">
+    <a asp-controller="Category" asp-action="Add">Thêm mới danh mục</a>
+</button>
+
+<table class="table-hover">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên danh mục</th>
+            <th>Slug</th>
+            <th>Mô tả</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Slug</td>
+                <td>@item.Description</td>
+                
+                <td>
+                    <a class="btn btn-warning btn-sm" asp-controller="Category" asp-action="Edit" asp-route-Id="@item.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Category" asp-action="Delete" asp-route-Id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

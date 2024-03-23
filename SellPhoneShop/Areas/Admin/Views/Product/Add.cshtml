@@ -1,0 +1,66 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<h4> Add Product </h4>
+
+<div class="col-md-9">
+    <form asp-action="Add" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label>Tên sản phẩm:</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label>Mô tả</label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label>Giá</label>
+            <input type ="number" asp-for="Price" class="form-control-number" />
+            <span asp-validation-for="Price" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label>Hình</label>
+            <input asp-for="ImageUpload" class="form-control-file" />
+            <span asp-validation-for="ImageUpload" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                <option>--Chọn loại sản phẩm--</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Brand</label>
+            <select asp-for="BrandId" class="form-control" asp-items="ViewBag.Brands">
+                <option>--Chọn thương hiệu--</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary">Lưu</button>
+        </div>       
+    </form>
+    <a asp-action="Index">Back to List Product</a>
+</div>
+
+@section Scripts {
+    @{
+        //đồng bộ scripts
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    
+   
+}
+
